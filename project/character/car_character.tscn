@@ -72,7 +72,8 @@ rotation_smoothing_speed = 3.0
 script = SubResource("GDScript_j35w5")
 
 [node name="Polygon2D" parent="." index="2"]
-polygon = PackedVector2Array(-33, -18, -41, -12, -41, 12, -33, 18, 30, 18, 38, 12, 38, -12, 30, -18)
+color = Color(0.560784, 0.827451, 1, 1)
+polygon = PackedVector2Array(-33, -20, -43, -12, -43, 12, -33, 20, 30, 20, 40, 12, 40, -12, 30, -20)
 
 [node name="TrailPos1" parent="." index="3"]
 position = Vector2(-33, -12)
