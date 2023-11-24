@@ -1,0 +1,48 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="花生迷途 Peanut's Journey"
+config/description="MoYuStudio"
+run/main_scene="res://main.tscn"
+config/features=PackedStringArray("4.1", "Forward Plus")
+boot_splash/show_image=false
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+config/icon="res://assets/icon/icon_x64.png"
+config/windows_native_icon="res://resource/icon/icon_x64.ico"
+
+[autoload]
+
+Global="*res://utility/global.gd"
+GlobalSteam="*res://utility/steam.gd"
+
+[display]
+
+window/size/viewport_width=3840
+window/size/viewport_height=2160
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
+[editor]
+
+movie_writer/mjpeg_quality=1.0
+
+[layer_names]
+
+2d_render/layer_1="World"
+2d_render/layer_2="Player"
+2d_render/layer_3="Enemy"
+2d_render/layer_4="Loot"
+2d_physics/layer_1="World"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="Enemy"
+2d_physics/layer_4="Loot"
