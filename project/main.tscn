@@ -5,10 +5,10 @@
 
 [node name="Main" type="Node"]
 
-[node name="CarPlayer" parent="." instance=ExtResource("1_jv7t6")]
-
 [node name="IconX64" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(32.9999, -23)
 scale = Vector2(14.8281, 13.7813)
 texture = ExtResource("2_o23cp")
+
+[node name="CarPlayer" parent="." instance=ExtResource("1_jv7t6")]

@@ -8,68 +8,14 @@ extends Car
 
 @onready var camera = $Camera
 
-# @onready var ray_cast = preload('res://source/attack/ray_cast.tscn')
-# @onready var electric_field = preload('res://source/attack/electric_field.tscn')
-
-var ray_cast_attack
-var electric_field_attack
-
 func _ready():
 	camera.rotation = 90
 	camera.set_as_top_level(true)
-	# gun.rotation = 44
-	
-	
 	
 func physics_process(delta):
 	camera.global_position = global_position
 	camera.rotation = lerp_angle(camera.rotation, rotation + deg_to_rad(90), 0.1)
-	
-	#var mouse_pos = get_local_mouse_position()
-	#var camera_offset = (mouse_pos - global_position) / Vector2(1920.0/2.0, 1080.0/2.0)
-	#camera.offset = camera_offset
-	
-	'''
-	if Global.player_dict['ray_cast_level'] == 0:
-		pass
-	if Global.player_dict['ray_cast_level'] > 0:
-		if Input.is_action_just_pressed('mouse_left'):
-			if $RayCast != null:
-				pass
-			else:
-				ray_cast_attack = ray_cast.instantiate()
-				ray_cast_attack.target = get_local_mouse_position()
-				ray_cast_attack.level = Global.player_dict['ray_cast_level']
-				ray_cast_attack.name = 'RayCast'
-				# ray_cast_attack.position = body.position
-				# ray_cast_attack.rotation = get_local_mouse_position()
-				# ray_cast_attack.look_at(get_local_mouse_position())
-				add_child(ray_cast_attack)
-				
-	if Global.player_dict['electric_field_level'] == 0:
-		pass
-	if Global.player_dict['electric_field_level'] > 0:
-		if $ElectricField != null:
-			pass
-		else:
-			electric_field_attack = electric_field.instantiate()
-			# electric_field_attack.target = get_local_mouse_position()
-			electric_field_attack.level = Global.player_dict['electric_field_level']
-			electric_field_attack.name = 'ElectricField'
-			# ray_cast_attack.position = body.position
-			# ray_cast_attack.rotation = get_local_mouse_position()
-			# ray_cast_attack.look_at(get_local_mouse_position())
-			add_child(electric_field_attack)
-		
-	if Input.is_action_just_released('mouse_left'):
-		if $RayCast != null:
-			$RayCast.switch = false
-		
-	if Input.is_action_pressed('mouse_left'):
-		if $RayCast != null:
-			ray_cast_attack.look_at(get_global_mouse_position())
-	'''
-	
+
 # 自定义函数 =============================================================
 
 func control():
@@ -93,18 +39,8 @@ func control():
 		current_acc = lerpf(current_acc, 0, 0.001) # 如果我释放了加速键，发动机会减速但不会立即停止
 	acc = target_acc
 
-
-
 # 信号 ================================================================
 	
-
-		
-
-
-
-
-
-
 "
 
 [sub_resource type="GDScript" id="GDScript_j35w5"]
