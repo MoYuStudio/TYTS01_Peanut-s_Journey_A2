@@ -71,6 +71,10 @@ ui_down={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://language/language.zh.translation", "res://language/language.en.translation")
+
 [layer_names]
 
 2d_render/layer_1="World"

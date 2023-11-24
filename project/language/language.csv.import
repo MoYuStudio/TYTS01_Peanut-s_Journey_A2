@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bhqty18tndicw"
+
+[deps]
+
+files=["res://language/language.zh.translation", "res://language/language.en.translation", "res://language/language..translation", "res://language/language..translation", "res://language/language..translation", "res://language/language..translation", "res://language/language..translation", "res://language/language..translation", "res://language/language..translation", "res://language/language..translation", "res://language/language..translation", "res://language/language..translation", "res://language/language..translation", "res://language/language..translation", "res://language/language..translation", "res://language/language..translation", "res://language/language..translation", "res://language/language..translation", "res://language/language..translation"]
+
+source_file="res://language/language.csv"
+dest_files=["res://language/language.zh.translation", "res://language/language.en.translation", "res://language/language..translation", "res://language/language..translation", "res://language/language..translation", "res://language/language..translation", "res://language/language..translation", "res://language/language..translation", "res://language/language..translation", "res://language/language..translation", "res://language/language..translation", "res://language/language..translation", "res://language/language..translation", "res://language/language..translation", "res://language/language..translation", "res://language/language..translation", "res://language/language..translation", "res://language/language..translation", "res://language/language..translation"]
+
+[params]
+
+compress=true
+delimiter=0

@@ -1,0 +1,194 @@
+[gd_scene load_steps=20 format=3 uid="uid://ba3l4j6av1i73"]
+
+[ext_resource type="Theme" uid="uid://chuxvp10nb5hw" path="res://interface/theme.tres" id="1_1vtqd"]
+[ext_resource type="Texture2D" path="res://resource/music_cover/TreeStarMoon_CC0PublicDomain.jpg" id="2_yt1af"]
+[ext_resource type="Texture2D" path="res://resource/ui/music_player_0.png" id="3_74t5n"]
+[ext_resource type="Texture2D" path="res://resource/ui/music_player_2.png" id="4_nmh4u"]
+[ext_resource type="Texture2D" path="res://resource/ui/music_player_1.png" id="5_27jds"]
+[ext_resource type="Texture2D" path="res://resource/ui/music_player_4.png" id="6_av5tr"]
+
+[sub_resource type="GDScript" id="GDScript_u48wl"]
+script/source = "
+extends Node
+
+@onready var control = $Control
+@onready var sound_name = $Control/Panel/Label
+@onready var player = $AudioStreamPlayer
+
+@onready var play_button = $Control/Panel/HBoxContainer/Button2
+
+var play_button_stop = preload(\"res://resource/ui/music_player_2.png\")
+var play_button_play = preload(\"res://resource/ui/music_player_3.png\")
+
+var path = \"resource/music_TreeStarMoon_CC0PublicDomain/\"
+var music_dict = {
+					'TreeStarMoon_CC0PublicDomain':[],
+				}
+
+func _ready():
+	
+	music_dict['TreeStarMoon_CC0PublicDomain'] = Global.traverse(path)
+	
+	change_music()
+	
+func _process(delta):
+	if player.stream_paused == true:
+		play_button.icon = play_button_play
+	else:
+		play_button.icon = play_button_stop
+	
+func change_music():
+	var player_sound = music_dict['TreeStarMoon_CC0PublicDomain'][randi_range(0,len(music_dict['TreeStarMoon_CC0PublicDomain'])-1)]
+	player.stream = load(path+player_sound)
+	player.play()
+	sound_name.text = player_sound
+
+func _on_player_next_pressed():
+	change_music()
+
+func _on_player_stop_pressed():
+	if player.stream_paused == true:
+		player.stream_paused = false
+	else:
+		player.stream_paused = true
+"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hjm5x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ccyxy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4ju1d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tjg1s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kubha"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oj7vn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q7ioa"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gyx4p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ecqog"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_spr0h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nqhlu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b0yum"]
+
+[node name="MusicPlayer" type="CanvasLayer"]
+process_mode = 3
+script = SubResource("GDScript_u48wl")
+
+[node name="Control" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_left = 178.0
+offset_top = 1810.0
+offset_right = 218.0
+offset_bottom = 1850.0
+
+[node name="Panel" type="Panel" parent="Control"]
+process_mode = 3
+layout_mode = 0
+offset_right = 990.0
+offset_bottom = 160.0
+theme = ExtResource("1_1vtqd")
+
+[node name="TextureRect" type="TextureRect" parent="Control/Panel"]
+process_mode = 3
+texture_filter = 1
+layout_mode = 0
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 145.0
+offset_bottom = 145.0
+texture = ExtResource("2_yt1af")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Control/Panel"]
+process_mode = 3
+modulate = Color(1, 1, 1, 0.784314)
+texture_filter = 1
+layout_mode = 0
+offset_left = 172.0
+offset_top = 37.0
+offset_right = 568.0
+offset_bottom = 124.0
+text = "Music Name"
+clip_text = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Panel"]
+process_mode = 3
+layout_mode = 0
+offset_left = 580.0
+offset_top = 32.0
+offset_right = 957.0
+offset_bottom = 126.0
+alignment = 1
+
+[node name="Button" type="Button" parent="Control/Panel/HBoxContainer"]
+process_mode = 3
+texture_filter = 1
+custom_minimum_size = Vector2(90, 90)
+layout_mode = 2
+theme = ExtResource("1_1vtqd")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_hjm5x")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ccyxy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4ju1d")
+icon = ExtResource("3_74t5n")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button2" type="Button" parent="Control/Panel/HBoxContainer"]
+process_mode = 3
+texture_filter = 1
+custom_minimum_size = Vector2(90, 90)
+layout_mode = 2
+theme = ExtResource("1_1vtqd")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_tjg1s")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_kubha")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_oj7vn")
+icon = ExtResource("4_nmh4u")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button3" type="Button" parent="Control/Panel/HBoxContainer"]
+process_mode = 3
+texture_filter = 1
+custom_minimum_size = Vector2(90, 90)
+layout_mode = 2
+theme = ExtResource("1_1vtqd")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_q7ioa")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_gyx4p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ecqog")
+icon = ExtResource("5_27jds")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button4" type="Button" parent="Control/Panel/HBoxContainer"]
+process_mode = 3
+texture_filter = 1
+custom_minimum_size = Vector2(90, 90)
+layout_mode = 2
+theme = ExtResource("1_1vtqd")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_spr0h")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_nqhlu")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b0yum")
+icon = ExtResource("6_av5tr")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -15.0
+autoplay = true
+bus = &"BGM"
+
+[connection signal="pressed" from="Control/Panel/HBoxContainer/Button2" to="." method="_on_player_stop_pressed"]
+[connection signal="pressed" from="Control/Panel/HBoxContainer/Button3" to="." method="_on_player_next_pressed"]

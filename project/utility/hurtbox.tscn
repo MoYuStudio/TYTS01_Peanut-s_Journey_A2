@@ -1,0 +1,101 @@
+[gd_scene load_steps=6 format=3 uid="uid://5ygp3ic8vnl6"]
+
+[ext_resource type="Texture2D" uid="uid://cmligav026enw" path="res://resource/image/blood.png" id="1_60451"]
+
+[sub_resource type="GDScript" id="GDScript_j67s4"]
+script/source = "
+extends Area2D
+
+@export_enum('Cooldown','HitOnce','DisableHitBox') var hitbox_type = 0
+
+@onready var collision = $CollisionShape2D
+@onready var disable_timer = $DisableTimer
+@onready var hurt_audio = $AudioStreamPlayer2D
+@onready var hurt_particle = $GPUParticles2D
+
+signal hurt(damage, angle, knock_back)
+
+var hit_once_array = []
+
+func remove_from_list(object):
+	if hit_once_array.has(object):
+		hit_once_array.erase(object)
+
+func _on_area_entered(area):
+	if area.is_in_group('attack'):
+		if not area.get('damage') == null:
+			match hitbox_type:
+				0: # Cool Down
+					collision.call_deferred('set','disabled',true)
+					disable_timer.start()
+					hurt_audio.play()
+					# hurt_particle.emit_particle()
+					
+				1: # Hit Once
+					if hit_once_array.has(area) == false:
+						hit_once_array.append(area)
+						if area.has_signal('remove_from_array'):
+							if not area.is_connected('remove_from_array',Callable(self, 'remove_from_list')):
+								area.connect('remove_from_array',Callable(self, 'remove_from_list'))
+					else:
+						return
+				2: # Disable HitBox
+					if area.has_method('tempdisable'):
+						area.tempdisable()
+			var damage = area.damage
+			var angle = Vector2.ZERO
+			var knock_back = 1
+			if not area.get('angle') == null:
+				angle = area.angle
+			if not area.get('knock_back') == null:
+				knock_back = area.knock_back
+				
+			emit_signal('hurt', damage, angle, knock_back)
+			if area.has_method('enemy_hit'):
+				area.enemy_hit(1)
+
+func _on_disable_timer_timeout():
+	collision.call_deferred('set','disabled',false)
+"
+
+[sub_resource type="Curve" id="Curve_ylar0"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_v1syp"]
+curve = SubResource("Curve_ylar0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pc15a"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 6.0
+initial_velocity_max = 16.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.0
+scale_max = 6.0
+scale_curve = SubResource("CurveTexture_v1syp")
+color = Color(1, 0, 0, 0.25098)
+
+[node name="HurtBox" type="Area2D"]
+collision_layer = 0
+collision_mask = 0
+script = SubResource("GDScript_j67s4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="DisableTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+bus = &"SFX"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+visible = false
+texture_filter = 1
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_pc15a")
+texture = ExtResource("1_60451")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="DisableTimer" to="." method="_on_disable_timer_timeout"]
