@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://cg241ljt7tomh"]
+
+[sub_resource type="Curve" id="Curve_quj16"]
+_data = [Vector2(0, 0), 0.0, 2.732, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="GDScript" id="GDScript_q6r1b"]
+script/source = "
+extends Line2D
+
+var point
+
+var leave_tracks = true
+
+func _ready():
+	set_as_top_level(true)
+
+func _physics_process(delta):
+	if leave_tracks:
+		point = get_parent().global_position
+		add_point(point)
+		if points.size() > 21:
+			remove_point(0)
+	else:
+		if points.size():
+			remove_point(0)
+		#else:
+		#	queue_free()
+"
+
+[node name="Trail" type="Line2D"]
+modulate = Color(1.5, 1.5, 1.5, 1)
+z_index = -1
+width = 12.0
+width_curve = SubResource("Curve_quj16")
+default_color = Color(0.501961, 0.501961, 0.501961, 0.25098)
+script = SubResource("GDScript_q6r1b")
