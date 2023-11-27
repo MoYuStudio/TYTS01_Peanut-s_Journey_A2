@@ -1,40 +1,68 @@
-[gd_scene load_steps=2 format=3 uid="uid://dacmh4og8aa8v"]
+[gd_scene load_steps=5 format=3 uid="uid://dacmh4og8aa8v"]
 
 [ext_resource type="Theme" uid="uid://chuxvp10nb5hw" path="res://interface/theme.tres" id="1_1a0r5"]
+[ext_resource type="Texture2D" uid="uid://bggrci68ls6af" path="res://assets/icon/country.png" id="2_kcnd8"]
+[ext_resource type="Texture2D" uid="uid://bxxxlksn7bvef" path="res://assets/icon/auxiliary.png" id="3_jq4ks"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mc2kk"]
 
 [node name="MenuMain" type="Node"]
 
 [node name="Panel" type="Panel" parent="."]
 texture_filter = 1
-offset_left = 978.0
-offset_top = 611.0
-offset_right = 2852.0
-offset_bottom = 1452.0
+offset_left = 305.0
+offset_top = 296.0
+offset_right = 2204.0
+offset_bottom = 1545.0
 theme = ExtResource("1_1a0r5")
-
-[node name="Label" type="Label" parent="Panel"]
-layout_mode = 0
-offset_left = 476.0
-offset_top = 124.0
-offset_right = 1349.0
-offset_bottom = 211.0
-theme_override_font_sizes/font_size = 64
-text = "花生迷途 Peanut's Journey"
+theme_override_styles/panel = SubResource("StyleBoxEmpty_mc2kk")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 0
-offset_left = 471.0
-offset_top = 285.0
-offset_right = 1437.0
-offset_bottom = 723.0
-theme_override_constants/separation = 16
+offset_right = 1884.0
+offset_bottom = 1528.0
+theme_override_constants/separation = 64
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 512
+text = "花生迷途"
+horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 64
-text = "新游戏"
+theme_override_font_sizes/font_size = 256
+text = "开始游戏"
 
-[node name="Button2" type="Button" parent="Panel/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="SettingButton" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(1400, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "设置"
+
+[node name="CountryButton" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(152, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
-text = "新游戏"
+icon = ExtResource("2_kcnd8")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="AuxiliaryButton" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(152, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+icon = ExtResource("3_jq4ks")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="QuitButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "退出"

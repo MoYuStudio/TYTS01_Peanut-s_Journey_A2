@@ -1,6 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://5ygp3ic8vnl6"]
-
-[ext_resource type="Texture2D" uid="uid://cmligav026enw" path="res://resource/image/blood.png" id="1_60451"]
+[gd_scene load_steps=5 format=3 uid="uid://5ygp3ic8vnl6"]
 
 [sub_resource type="GDScript" id="GDScript_j67s4"]
 script/source = "
@@ -95,7 +93,6 @@ visible = false
 texture_filter = 1
 emitting = false
 process_material = SubResource("ParticleProcessMaterial_pc15a")
-texture = ExtResource("1_60451")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="DisableTimer" to="." method="_on_disable_timer_timeout"]

@@ -85,3 +85,7 @@ locale/translations=PackedStringArray("res://language/language.zh.translation", 
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Enemy"
 2d_physics/layer_4="Loot"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
