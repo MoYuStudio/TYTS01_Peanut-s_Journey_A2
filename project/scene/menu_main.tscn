@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://dacmh4og8aa8v"]
+
+[ext_resource type="Theme" uid="uid://chuxvp10nb5hw" path="res://interface/theme.tres" id="1_1a0r5"]
+
+[node name="MenuMain" type="Node"]
+
+[node name="Panel" type="Panel" parent="."]
+texture_filter = 1
+offset_left = 978.0
+offset_top = 611.0
+offset_right = 2852.0
+offset_bottom = 1452.0
+theme = ExtResource("1_1a0r5")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 476.0
+offset_top = 124.0
+offset_right = 1349.0
+offset_bottom = 211.0
+theme_override_font_sizes/font_size = 64
+text = "花生迷途 Peanut's Journey"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 471.0
+offset_top = 285.0
+offset_right = 1437.0
+offset_bottom = 723.0
+theme_override_constants/separation = 16
+
+[node name="Button" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "新游戏"
+
+[node name="Button2" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "新游戏"
