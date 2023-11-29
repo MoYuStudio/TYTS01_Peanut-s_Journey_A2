@@ -1,20 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://bkpkmar83hw7o"]
 
-[ext_resource type="Script" path="res://utility/scene_manager.gd" id="1_8jvhs"]
+[ext_resource type="PackedScene" uid="uid://b0fla2lsx43nr" path="res://scene/init.tscn" id="2_btdks"]
 
 [node name="Main" type="Node"]
-script = ExtResource("1_8jvhs")
 
-[node name="HUD" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Menu" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="SceneInstance" type="Node" parent="."]
+[node name="Init" parent="." instance=ExtResource("2_btdks")]

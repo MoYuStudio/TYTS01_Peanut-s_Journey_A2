@@ -4,7 +4,7 @@
 
 extends Node
 
-class_name SceneManager
+# class_name SceneManager
 
 @onready var scene_instantiate_place = $SceneInstance
 
@@ -28,4 +28,4 @@ func load_scene(scene_name:String):
 	if resource:
 		scene_instantiate = resource.instantiate()
 		scene_instantiate_place.add_child(scene_instantiate)
-		
+

@@ -13,9 +13,8 @@ func _ready():
 	$Logo/AnimationPlayer.play('init')
 	$Mask/AnimationPlayer.play('init')
 	await $Mask/AnimationPlayer.animation_finished
-	get_parent().get_parent().load_scene(\"menu_main\")
-	# get_tree().change_scene_to_file('res://source/scene/menu_main.tscn')
-	#SceneTransition.change_scene('black','res://source/scene/menu_main.tscn')
+	# get_tree().change_scene_to_file('res://scene/menu_main.tscn')
+	SceneTransition.change_scene('black','res://scene/menu_main.tscn')
 	
 "
 
@@ -91,7 +90,6 @@ script = SubResource("GDScript_6o0tv")
 [node name="Logo" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(1861, 1023)
-scale = Vector2(4.84085, 4.84085)
 texture = ExtResource("1_8ng5c")
 script = SubResource("GDScript_r6bpv")
 
