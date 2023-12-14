@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=14 format=3 uid="uid://chuxvp10nb5hw"]
 
-[ext_resource type="FontFile" uid="uid://dwo3w3m0bti6d" path="res://assets/font/YouSheBiaoTiHei.ttf" id="1"]
+[ext_resource type="FontFile" uid="uid://dwo3w3m0bti6d" path="res://font/YouSheBiaoTiHei.ttf" id="1"]
 
 [sub_resource type="StyleBoxEmpty" id="6"]
 

@@ -1,0 +1,98 @@
+[gd_scene load_steps=8 format=3 uid="uid://dacmh4og8aa8v"]
+
+[ext_resource type="Theme" uid="uid://chuxvp10nb5hw" path="res://interface/theme.tres" id="1_c4is2"]
+[ext_resource type="Texture2D" uid="uid://bggrci68ls6af" path="res://image/country.png" id="2_8phw5"]
+[ext_resource type="Texture2D" uid="uid://bxxxlksn7bvef" path="res://image/auxiliary.png" id="3_r6hj5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mc2kk"]
+
+[sub_resource type="GDScript" id="GDScript_xm4ud"]
+script/source = "
+extends Button
+
+func _process(delta):
+	if is_pressed():
+		SceneTransition.change_scene('black','res://scenes/game_main.tscn')
+"
+
+[sub_resource type="GDScript" id="GDScript_lgu7j"]
+script/source = "
+extends Button
+
+func _process(delta):
+	if is_pressed():
+		SceneTransition.change_scene('black','res://scenes/menu_setting.tscn')
+"
+
+[sub_resource type="GDScript" id="GDScript_1xfbq"]
+script/source = "
+extends Button
+
+func _process(delta):
+	if is_pressed():
+		get_tree().quit()
+"
+
+[node name="MenuMain" type="Node"]
+
+[node name="Panel" type="Panel" parent="."]
+texture_filter = 1
+offset_right = 10.0
+offset_bottom = 10.0
+theme = ExtResource("1_c4is2")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_mc2kk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 351.0
+offset_top = 283.0
+offset_right = 2235.0
+offset_bottom = 1811.0
+theme_override_constants/separation = 64
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 512
+text = "花生迷途"
+horizontal_alignment = 1
+
+[node name="StartButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 256
+text = "开始游戏"
+script = SubResource("GDScript_xm4ud")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="SettingButton" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(1400, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "设置"
+script = SubResource("GDScript_lgu7j")
+
+[node name="CountryButton" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(152, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+icon = ExtResource("2_8phw5")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="AuxiliaryButton" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(152, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+icon = ExtResource("3_r6hj5")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="QuitButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "退出"
+script = SubResource("GDScript_1xfbq")
